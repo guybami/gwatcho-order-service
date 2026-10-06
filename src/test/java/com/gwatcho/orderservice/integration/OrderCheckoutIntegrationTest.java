@@ -1,4 +1,4 @@
-package com.gwatcho.orderservice.service;
+package com.gwatcho.orderservice.integration;
 
 import com.gwatcho.orderservice.dto.CheckoutItemRequest;
 import com.gwatcho.orderservice.dto.CheckoutRequest;
@@ -9,6 +9,7 @@ import com.gwatcho.orderservice.entity.Order;
 import com.gwatcho.orderservice.entity.OrderStatus;
 import com.gwatcho.orderservice.repository.OrderRepository;
 
+import com.gwatcho.orderservice.service.OrderService;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
