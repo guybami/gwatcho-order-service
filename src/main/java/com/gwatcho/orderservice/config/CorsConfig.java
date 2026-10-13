@@ -15,35 +15,20 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
 
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(
-                List.of("http://localhost:4200")
-        );
-
-        configuration.setAllowedMethods(
-                List.of(
-                        "GET",
-                        "POST",
-                        "PUT",
-                        "DELETE",
-                        "OPTIONS"
-                )
-        );
-        configuration.setAllowedHeaders(
-                List.of(
-                        "Authorization",
-                        "Content-Type",
-                        "Accept"
-                )
-        );
-
+        configuration.setAllowedOrigins(List.of(
+                "http://localhost",
+                "http://localhost:4200"
+        ));
+        configuration.setAllowedMethods(List.of(
+                "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"
+        ));
+        configuration.setAllowedHeaders(List.of(
+                "Authorization", "Content-Type", "Accept"
+        ));
         configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
-
-        source.registerCorsConfiguration(
-                "/**",
-                configuration
-        );
+        source.registerCorsConfiguration("/**", configuration);
 
         return source;
     }
