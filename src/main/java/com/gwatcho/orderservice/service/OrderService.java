@@ -477,4 +477,23 @@ public class OrderService {
         log.info("Order completed successfully: orderId={}", orderId);
         return saved;
     }
+
+
+    @Transactional
+    public OrderResponse updateOrderStatus(Long id, OrderStatus newStatus) {
+        if (newStatus == null) {
+            throw new IllegalArgumentException("Order status must not be null");
+        }
+        Order order = findOrder(id);
+        // Admin may change the status from any current status.
+        // No transition restrictions are applied.
+        order.setStatus(newStatus);
+        Order updatedOrder = orderRepository.save(order);
+        log.info("Order status updated by admin: orderId={}, status={}", id, newStatus);
+        return toResponse(updatedOrder);
+    }
+
+
+
+
 }
